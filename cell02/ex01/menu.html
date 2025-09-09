@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNCF Sandwich - Drop-down Menu</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="logo" aria-label="SNCF Sandwich">SNCF Sandwich</h1>
+        <nav class="nav" aria-label="Primary">
+            <ul class="menu">
+                <li class="menu-item"><a href="#">Home</a></li>
+                <li class="menu-item has-dropdown">
+                    <a href="#" class="menu-link" aria-haspopup="true" aria-expanded="false">Sandwiches</a>
+                    <ul class="dropdown" aria-label="Sandwiches submenu">
+                        <li><a href="#">Ham &amp; Cheese</a></li>
+                        <li><a href="#">Tuna Delight</a></li>
+                        <li class="has-subdropdown">
+                            <a href="#" class="menu-link">Veggie</a>
+                            <ul class="subdropdown">
+                                <li><a href="#">Mediterranean</a></li>
+                                <li><a href="#">Caprese</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Chicken Pesto</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item has-dropdown">
+                    <a href="#" class="menu-link" aria-haspopup="true" aria-expanded="false">Drinks</a>
+                    <ul class="dropdown" aria-label="Drinks submenu">
+                        <li><a href="#">Coffee</a></li>
+                        <li><a href="#">Tea</a></li>
+                        <li><a href="#">Orange Juice</a></li>
+                        <li><a href="#">Water</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item"><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <p>Hover the items to open the drop-down menus. Pure HTML &amp; CSS.</p>
+    </main>
+</body>
+</html>
+
+
