@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Table</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+        }
+        /* Make the table cover the entire page */
+        .fullpage-table-wrapper {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            width: 100vw;
+        }
+        table.fullpage-table {
+            width: min(100vw, 100%);
+            height: min(100vh, 100%);
+            border-collapse: collapse;
+            table-layout: fixed; /* Ensures equal column distribution and responsive shrink */
+        }
+        td {
+            border: 2px solid #333;
+            padding: clamp(8px, 2vw, 24px); /* Responsive padding */
+            word-wrap: break-word;
+            overflow-wrap: anywhere;
+            font-size: clamp(14px, 2.5vw, 28px); /* Responsive text size */
+            font-weight: bold;
+            vertical-align: middle;
+        }
+        .first-cell {
+            background-color: #4a90e2;
+            color: #fff;
+        }
+        .second-cell {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+        /* Make the table always fill the viewport size */
+        .fullpage-table tr { height: 100%; }
+        .fullpage-table td { width: 50%; }
+        /* Remove any outer gaps to truly cover the page */
+        .fullpage-table, .fullpage-table-wrapper { margin: 0; }
+    </style>
+</head>
+<body>
+    <div class="fullpage-table-wrapper">
+        <table class="fullpage-table">
+            <tr>
+                <td class="first-cell">Rich but sad</td>
+                <td class="second-cell">Poor but happy</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
