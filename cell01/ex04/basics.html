@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basics</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ff69b4; /* Pink background */
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            flex: 1;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            font-size: 4rem;
+            margin: 40px 0 60px 0;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .images-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .shop-item {
+            text-align: center;
+            max-width: 300px;
+        }
+        
+        .shop-item img {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+        }
+        
+        .shop-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            background-color: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        
+        .shop-link:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+        
+        .separator {
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            margin: 60px 0 30px 0;
+        }
+        
+        .footer {
+            text-align: right;
+            font-style: italic;
+            font-family: 'Courier New', monospace;
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Web Development & E-commerce! 🚀</h1>
+        
+        <div class="images-container">
+            <div class="shop-item">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop" alt="Amazon Online Shop" />
+                <a href="https://www.amazon.com" target="_blank" class="shop-link">Visit Amazon</a>
+            </div>
+            <div class="shop-item">
+                <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?w=400&h=300&fit=crop" alt="E-commerce Store" />
+                <a href="https://www.shopify.com" target="_blank" class="shop-link">Visit Shopify</a>
+            </div>
+        </div>
+        
+        <div class="separator"></div>
+        
+        <div class="footer">
+            © njanchay 2025 
+        </div>
+    </div>
+</body>
+</html>
