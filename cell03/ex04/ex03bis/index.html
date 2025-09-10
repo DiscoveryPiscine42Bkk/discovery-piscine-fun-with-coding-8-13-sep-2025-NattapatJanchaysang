@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To do or not to do (jQuery)</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    html, body { height: 100%; }
+    body { margin:0; display:grid; place-items:center; background:#f6f7fb; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .wrapper { width:min(560px,92vw); }
+    .actions { display:flex; justify-content:space-between; margin-bottom:12px; }
+    #newBtn { padding:8px 12px; font-size:16px; cursor:pointer; }
+    #ft_list { display:flex; flex-direction:column-reverse; gap:8px; }
+    .todo { background:#fff; padding:10px 12px; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.08); cursor:pointer; word-break:break-word; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="actions">
+      <h1>To do list</h1>
+      <button id="newBtn" type="button">New</button>
+    </div>
+    <div id="ft_list"></div>
+  </div>
+
+  <script>
+    (function($){
+      var KEY='ft_list_items_v1_jq';
+      function read(){ try{ var r=localStorage.getItem(KEY); var a=JSON.parse(r||'[]'); return Array.isArray(a)?a:[]; }catch(e){ return []; } }
+      function write(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); }catch(e){} }
+      function persist(){ var a=$('#ft_list').children().map(function(){ return $(this).text(); }).get(); write(a); }
+      function add(text){ var el=$('<div class="todo"></div>').text(text).on('click', function(){ if(confirm('Remove this TO DO?')){ $(this).remove(); persist(); } }); $('#ft_list').append(el); persist(); }
+      function render(){ var a=read(); $('#ft_list').empty(); a.forEach(add); }
+      $('#newBtn').on('click', function(){ var t=prompt('Enter a new TO DO:'); if(t && t.trim()!=='') add(t.trim()); });
+      render();
+    })(jQuery);
+  </script>
+</body>
+</html>
+
