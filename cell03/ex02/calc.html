@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>It's over 9000</title>
+  <style>
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #f6f7fb;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .calc {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    input[type="text"], select {
+      padding: 8px 10px;
+      font-size: 16px;
+      width: 120px;
+    }
+    button {
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form class="calc" id="calcForm">
+    <input id="left" type="text" inputmode="numeric" placeholder="Left" aria-label="Left operand">
+    <select id="op" aria-label="Operator">
+      <option value="+">+</option>
+      <option value="-">-</option>
+      <option value="*">*</option>
+      <option value="/">/</option>
+      <option value="%">%</option>
+    </select>
+    <input id="right" type="text" inputmode="numeric" placeholder="Right" aria-label="Right operand">
+    <button type="submit">Try me!</button>
+  </form>
+
+  <script>
+    (function () {
+      function isNonNegativeInteger(value) {
+        if (value === null || value === undefined) return false;
+        if (!/^\d+$/.test(value)) return false;
+        // Leading zeros are fine; parse to number
+        var n = Number(value);
+        return Number.isFinite(n) && n >= 0 && Math.floor(n) === n;
+      }
+
+      var form = document.getElementById('calcForm');
+      var left = document.getElementById('left');
+      var right = document.getElementById('right');
+      var op = document.getElementById('op');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var a = left.value.trim();
+        var b = right.value.trim();
+
+        if (!isNonNegativeInteger(a) || !isNonNegativeInteger(b)) {
+          alert('Error :(');
+          return;
+        }
+
+        var x = Number(a);
+        var y = Number(b);
+
+        if ((op.value === '/' || op.value === '%') && y === 0) {
+          console.log("It's over 9000!");
+          alert("It's over 9000!");
+          return;
+        }
+
+        var result;
+        switch (op.value) {
+          case '+': result = x + y; break;
+          case '-': result = x - y; break;
+          case '*': result = x * y; break;
+          case '/': result = x / y; break;
+          case '%': result = x % y; break;
+          default: alert('Error :('); return;
+        }
+        console.log(result);
+        alert(String(result));
+      });
+
+      // Reminder every 30 seconds
+      setInterval(function () {
+        alert('Please, use me...');
+      }, 30000);
+    })();
+  </script>
+</body>
+</html>
+

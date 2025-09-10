@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explode this balloon</title>
+  <style>
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #f6f7fb;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    #balloon {
+      width: 200px;
+      height: 200px;
+      background: red;
+      border-radius: 50%;
+      transition: width 120ms ease, height 120ms ease, background-color 120ms ease;
+      cursor: pointer;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="balloon" title="Click to grow, move out to shrink"></div>
+
+  <script>
+    (function () {
+      var balloon = document.getElementById('balloon');
+      var minSize = 200;
+      var maxSize = 420;
+      var size = minSize;
+      var colors = ['red', 'green', 'blue'];
+      var colorIndex = 0; // starts at red
+
+      function apply() {
+        balloon.style.width = size + 'px';
+        balloon.style.height = size + 'px';
+        balloon.style.backgroundColor = colors[colorIndex];
+      }
+
+      function stepColorForward() {
+        colorIndex = (colorIndex + 1) % colors.length;
+      }
+
+      function stepColorBackward() {
+        colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+      }
+
+      balloon.addEventListener('click', function () {
+        size += 10;
+        if (size > maxSize) {
+          // Explode and reset
+          size = minSize;
+          colorIndex = 0; // back to red
+        } else {
+          stepColorForward();
+        }
+        apply();
+      });
+
+      balloon.addEventListener('mouseleave', function () {
+        // shrink by 5 but not below min
+        size = Math.max(minSize, size - 5);
+        stepColorBackward();
+        apply();
+      });
+
+      apply();
+    })();
+  </script>
+</body>
+</html>
+
