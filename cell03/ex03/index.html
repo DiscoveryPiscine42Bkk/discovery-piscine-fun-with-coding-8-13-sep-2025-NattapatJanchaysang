@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To do or not to do</title>
+  <style>
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      background: #f6f7fb;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    .wrapper { width: min(560px, 92vw); }
+    .actions { display: flex; justify-content: space-between; margin-bottom: 12px; }
+    #newBtn { padding: 8px 12px; font-size: 16px; cursor: pointer; }
+    #ft_list { display: flex; flex-direction: column-reverse; gap: 8px; }
+    /* We will prepend new items at the top by using column-reverse and appending */
+    .todo {
+      background: #fff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      cursor: pointer;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="actions">
+      <h1>To do list</h1>
+      <button id="newBtn" type="button">New</button>
+    </div>
+    <div id="ft_list"></div>
+  </div>
+
+  <script src="todo.js"></script>
+</body>
+</html>
+
